@@ -1,8 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-
 package com.michaelsalvatierra.models.domain;
 
 /**
@@ -11,18 +6,63 @@ package com.michaelsalvatierra.models.domain;
  * @date Sep 2, 2022
  * @time 3:04:29 PM
  */
-public class Persona {
+import java.io.Serializable;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Id;
+
+
+ @Entity
+ @Table(name = "persona")
+ @NamedQueries({
+    @NamedQuery(name="Persona.findAll", query = "from Persona"), 
+    @NamedQuery(name="Persona.find", query = "from Persona WHERE id= :id")
+})
+public class Persona implements Serializable {
+     
+    private static final long serialVersionUID = 1L; 
+     
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY) 
     private int id;
+    
+    @Column
     private String nombre1;
+    
+    @Column
     private String nombre2;
+    
+    @Column
     private String nombre3;
+    
+    @Column
     private String apellido1;
+    
+    @Column
     private String apellido2;
+    
+    @Column
     private String telefono;
+    
+    @Column
     private String direccion;
+    
+    @Column
     private String ciudad;
+    
+    @Column(name = "codigo_postal")
     private String codigoPostal;
+    
+    @Column
     private String estado;
+    
+    @Column
     private String pais;
 
     public Persona(int id, String nombre1, String nombre2, String nombre3, String apellido1, String apellido2, String telefono, String direccion, String ciudad, String codigPostal, String estado, String pais) {
@@ -43,6 +83,11 @@ public class Persona {
     public Persona() {
     }
 
+    public Persona(int id) {
+        this.id = id;
+    }
+
+    
     public Persona(int id, String nombre1, String apellido1, String direccion, String ciudad, String codigPostal, String estado, String pais) {
         this.id = id;
         this.nombre1 = nombre1;

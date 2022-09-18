@@ -1,6 +1,15 @@
 package com.michaelsalvatierra.models.domain;
 
+import java.io.Serializable;
 import java.sql.Date;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 
 /**
  *
@@ -10,11 +19,26 @@ import java.sql.Date;
  *
  * Codigo Tecnico: IN5BM
  */
-public class Tarjeta {
 
+@Entity
+@Table(name = "tarjeta")
+@NamedQueries({
+    @NamedQuery(name = "Tarjeta.findAll", query = "from Tarjeta"),
+    @NamedQuery(name = "Tarjeta.find", query = "from Tarjeta WHERE numero_de_tarjeta = :numero_de_tarjeta")
+})
+public class Tarjeta implements Serializable{
+    
+    private static final long serialVersionUID = 1L;
+
+    @Id
+    @Column(name = "numero_de_tarjeta")
     private String numeroDeTarjeta;
+    
+    @Column(name = "nombre_en_tarjeta")
     private String nombreDeTarjeta;
+    @Column(name = "fecha_de_vencimiento")
     private Date fechaVencimiento;
+    @Column(name = "tipo_de_tarjeta")
     private String tipoDeTarjeta;
 
     public Tarjeta() {

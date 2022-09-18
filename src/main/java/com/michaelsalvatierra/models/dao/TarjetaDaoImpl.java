@@ -26,6 +26,8 @@ import java.util.List;
  */
 public class TarjetaDaoImpl implements ITarjetaDAO {
  private static final String SQL_SELECT="SELECT numero_de_tarjeta, nombre_en_tarjeta, fecha_de_vencimiento, tipo_de_tarjeta FROM tarjeta;";
+ private static final String SQL_DELETE = "DELETE FROM tarjeta WHERE id = ?";
+ private static final String SQL_SELECT_BY_ID = "SELECT numero_de_tarjeta, nombre_en_tarjeta, fecha_de_vencimiento, tipo_de_tarjeta FROM tarjeta WHERE numero_de_tarjeta = ?";
     private Connection con = null;
     private PreparedStatement pstmt = null;
     private ResultSet rs = null;
@@ -60,19 +62,61 @@ public class TarjetaDaoImpl implements ITarjetaDAO {
        }
        return listaTarjeta;
     }
+    
+    public Tarjeta get(Tarjeta tarjeta) {
+        try {
+            con = Conexion.getConnection();
+            pstmt = con.prepareStatement(SQL_SELECT_BY_ID);
+            pstmt.setString(1, tarjeta.getNumeroDeTarjeta());
+            System.out.println(pstmt.toString());
+            rs = pstmt.executeQuery();
+            while (rs.next()) {
+                tarjeta = new Tarjeta(
+                        rs.getString(1),
+                        rs.getString(2), 
+                        rs.getDate(3), 
+                        rs.getString(4)
+                );
+            }
+            System.out.println("estudiante: " + tarjeta);
+        } catch (SQLException e) {
+            System.out.println("\nSQLException\n");
+            e.printStackTrace(System.out);
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        } finally {
+            Conexion.close(rs);
+            Conexion.close(pstmt);
+            Conexion.close(con);
+        }
+        return tarjeta;
+    }
 
     @Override
-    public boolean add(Tarjeta tarjeta) {
+    public int add(Tarjeta tarjeta) {
         throw new UnsupportedOperationException("Not supported yet."); 
     }
 
     @Override
-    public boolean update(Tarjeta tarjeta) {
+    public int update(Tarjeta tarjeta) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
-    public boolean delete(Tarjeta tarjeta) {
-        throw new UnsupportedOperationException("Not supported yet."); 
+    public int delete(Tarjeta tarjeta) {
+        int rows = 0;
+        try{
+            con = Conexion.getConnection();
+            pstmt = con.prepareStatement(SQL_DELETE);
+            pstmt.setString(1,tarjeta.getNumeroDeTarjeta()); 
+            System.err.println(pstmt.toString());
+             rows = pstmt.executeUpdate();
+        }catch(SQLException e){
+            e.printStackTrace(System.out);
+            System.err.println("Se produjo un erro al intentar eliminar el registro con el id "+ tarjeta.getNumeroDeTarjeta());
+        }catch(Exception e){
+            e.printStackTrace(System.out);
+        }
+        return rows; 
     }
 }

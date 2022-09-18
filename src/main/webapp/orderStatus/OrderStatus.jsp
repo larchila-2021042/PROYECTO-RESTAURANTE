@@ -53,7 +53,7 @@
                     <div class="col-4"></div>
                     <div class="col-4">
                         <h1>
-                            <i class="fas fa-user-cog"></i>Control Order Satus
+                            <i class="fas fa-user-cog"></i>Control Order Status
                         </h1>
                     </div>
                     <div  class="col-4"></div>
@@ -67,12 +67,38 @@
                     <div class="row ">
                         <div class="col-md-12 col-sm-12 col-12 upbar">
                             <hr class="lineas-separacion">
-                            <button type="button" class="btn btn-secondary btn-agregar">Agregar Order</button>
+                            <button type="button" class="btn btn-secondary btn-agregar"  data-bs-toggle="modal" data-bs-target="#addModal">Agregar Order</button>
                             <hr class="lineas-separacion">
                         </div>
                     </div>
                 </div>
             </section>
+            
+            <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Agregar Order</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <form method="POST" action="${pageContext.request.contextPath}/ServletOrderStatus" class="was-validated">
+                        <div class="modal-body">
+                            <form>
+                                <div class="mb-3">
+                                    <label for="status" class="col-form-label">Status:</label>
+                                    <input type="text" class="form-control" id="status" name="status" required>
+                                </div>
+                                <input type="hidden" value="insertar" id="accion" name="accion">
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                    <button type="submit" class="btn btn-primary">Guardar</button>
+                                </div>
+                            </form>
+                        </div>
+                </div>
+            </div>
 
             <section id="estudiante">
                 <div class="container pb-5">             
@@ -99,10 +125,14 @@
                                             <td>${order.id}</td>
                                             <td>${order.status}</td>
                                             <td>
-                                                <i class="far fa-edit"></i>Editar
+                                                <a class="btn btn-warning" href="${pageContext.request.contextPath}/ServletOrderStatus?accion=editar&id=${order.id}">
+                                                <i class="fa fa-edit"></i> Editar
+                                                </a>
                                             </td>
                                             <td>
-                                                <i class="fa fa-trash-alt"></i>Eliminar
+                                                 <a class="btn btn-secondary" href="${pageContext.request.contextPath}/ServletOrderStatus?accion=eliminar&id=${order.id}">
+                                                    <i class="far fa-trash-alt"></i> Eliminar
+                                                </a>
                                             </td>
                                         </tr>
                                     </c:forEach>

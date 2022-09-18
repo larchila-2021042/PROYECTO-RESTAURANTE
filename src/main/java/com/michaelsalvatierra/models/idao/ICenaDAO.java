@@ -12,11 +12,11 @@ public interface ICenaDAO {
     public List<Cena> getAll();
 
     //Insertar un registtro 
-    public boolean add(Cena cena);
+    public int add(Cena cena);
 
     //Actualizar un registro
-    public boolean update(Cena cena);
+    public int update(Cena cena);
 
     //Eliminar un registro
-    public boolean delete(Cena cena);
+    public int delete(Cena cena);
 }

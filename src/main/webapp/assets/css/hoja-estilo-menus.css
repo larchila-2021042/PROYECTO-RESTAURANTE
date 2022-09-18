@@ -103,28 +103,8 @@ tr{
         width: 50%;
 }
 
-/*Container Menu*/
-
-.card{
-    margin-top: 30px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.container-menu-cards{
-    margin-top: 20px;
-    margin-bottom: 50px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
 #mostrador {
     text-align: center;
-}
-
-.btn-anadir-carrito{
-    margin-top: 20px;
-    margin-left: 60px;
 }
 
 .my-button {
@@ -149,4 +129,8 @@ tr{
 
 .lineas-separacion{
     border-top: 6px solid #000;
+}
+
+.btn-agregar{
+    width: 100%;
 }

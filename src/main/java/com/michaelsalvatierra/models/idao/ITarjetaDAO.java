@@ -17,11 +17,11 @@ public interface ITarjetaDAO {
     public List<Tarjeta> getAll();
 
     //Insertar un registtro 
-    public boolean add(Tarjeta tarjeta);
+    public int add(Tarjeta tarjeta);
 
     //Actualizar un registro
-    public boolean update(Tarjeta tarjeta);
+    public int update(Tarjeta tarjeta);
 
     //Eliminar un registro
-    public boolean delete(Tarjeta tarjeta);
+    public int delete(Tarjeta tarjeta);
 }

@@ -25,7 +25,7 @@
 <html lang="es">
 
 <head>
-    <title>Fundación Kinal</title>
+    <title>Forno Bistro</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.css"/>
@@ -79,12 +79,53 @@
         <div class="row ">
             <div class="col-md-12 col-sm-12 col-12 upbar">
                 <hr class="lineas-separacion">
-                    <button type="button" class="btn btn-secondary btn-agregar">Agregar Usuarios</button>
+                    <button type="button" class="btn btn-secondary btn-agregar" data-bs-toggle="modal" data-bs-target="#addModal">Agregar Usuarios</button>
                 <hr class="lineas-separacion">
             </div>
         </div>
             </div>
         </section>
+        
+        <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Agregar Usuario</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <form method="POST" action="${pageContext.request.contextPath}/ServletUsuario" class="was-validated">
+                        <div class="modal-body">
+                            <form>
+                                <div class="mb-3">
+                                    <label for="correo" class="col-form-label">Correo:</label>
+                                    <input type="email" class="form-control" id="correo" name="correo" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="password" class="col-form-label">Password:</label>
+                                    <input type="password" class="form-control" id="password" name="password" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="rolId" class="col-form-label">Id Rol:</label>
+                                    <input type="number" class="form-control" id="rolId" name="rolId" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="personaId" class="col-form-label">Id Persona:</label>
+                                    <input type="number" class="form-control" id="personaId" name="personaId" required>
+                                </div>
+                                
+                                <input type="hidden" value="insertar" id="accion" name="accion">
+
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                    <button type="submit" class="btn btn-primary">Guardar</button>
+                                </div>
+                            </form>
+                        </div>
+                </div>
+            </div>
         
         <section id="estudiante">
             <div class="container pb-5">             
@@ -119,10 +160,14 @@
                                         <td>${usuario.persona_id}</td>
                                         <td>${usuario.nombrePersona}</td>
                                         <td>
-                                            <i class="far fa-edit"></i>Editar
+                                            <a href="${pageContext.request.contextPath}/ServletUsuario?accion=editar&correo=${usuario.correo}" class="btn btn-warning">
+                                                <i class="fa fa-edit"></i>Editar
+                                            </a>
                                         </td>
                                         <td>
-                                            <i class="fa fa-trash-alt"></i>Eliminar
+                                            <a href="${pageContext.request.contextPath}/ServletUsuario?accion=eliminar&correo=${usuario.correo}" class="btn btn-secondary">
+                                                <i class="fa fa-trash-alt"></i>Eliminar
+                                            </a>
                                         </td>
                                     </tr>
                                 </c:forEach>
@@ -147,9 +192,6 @@
     <script type="text/javascript" src="../assets/js/jquery-3.6.0.js"></script>
     <script type="text/javascript" src="../assets/js/jquery.flexslider.js"></script>
     <script type="text/javascript" src="../assets/js/script.js"></script>
-    <!--
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    -->
     
     <script type="text/javascript" src="../assets/js/bootstrap.bundle.js"></script>
 </body>

@@ -19,11 +19,12 @@ public class Cena {
     private String nombrePlatillo;
     private int bebidaId;
     private String nombreBebida;
+    private String descripcion; 
     private float precio;
     private String rutaImagen;
     private String tiempo;
 
-    public Cena(int id, String nombre, int postreId, String nombrePostre, int platilloId, String nombrePlatillo, int bebidaId, String nombreBebida, float precio, String rutaImagen, String tiempo) {
+    public Cena(int id, String nombre, int postreId, String nombrePostre, int platilloId, String nombrePlatillo, int bebidaId, String nombreBebida, String Descripcion, float precio, String rutaImagen, String tiempo) {
         this.id = id;
         this.nombre = nombre;
         this.postreId = postreId;
@@ -32,34 +33,66 @@ public class Cena {
         this.nombrePlatillo = nombrePlatillo;
         this.bebidaId = bebidaId;
         this.nombreBebida = nombreBebida;
+        this.descripcion = Descripcion;
         this.precio = precio;
         this.rutaImagen = rutaImagen;
         this.tiempo = tiempo;
     }
 
-    public Cena() {
-    }
-
-    public Cena(int id, String nombre, int postreId, String nombrePostre, int platilloId, String nombrePlatillo, int bebidaId, String nombreBebida, float precio) {
+    public Cena(int id, String nombre, int postreId, int platilloId, int bebidaId, String Descripcion, float precio, String rutaImagen, String tiempo) {
         this.id = id;
         this.nombre = nombre;
         this.postreId = postreId;
-        this.nombrePostre = nombrePostre;
         this.platilloId = platilloId;
-        this.nombrePlatillo = nombrePlatillo;
         this.bebidaId = bebidaId;
-        this.nombreBebida = nombreBebida;
+        this.descripcion = Descripcion;
         this.precio = precio;
+        this.rutaImagen = rutaImagen;
+        this.tiempo = tiempo;
+    }
+  
+    public Cena(int id, String nombre, int postreId, int platilloId, int bebidaId, String descripcion, float precio, String rutaImagen) {
+        this.id = id;
+        this.nombre = nombre;
+        this.postreId = postreId;
+        this.platilloId = platilloId;
+        this.bebidaId = bebidaId;
+        this.descripcion = descripcion;
+        this.precio = precio;
+        this.rutaImagen = rutaImagen;
     }
 
-    public Cena(int aInt, String string, int aInt0, String string0, int aInt1, String string1) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public Cena(String nombre, int postreId, int platilloId, int bebidaId, String descripcion, float precio, String rutaImagen, String tiempo) {
+        this.nombre = nombre;
+        this.postreId = postreId;
+        this.platilloId = platilloId;
+        this.bebidaId = bebidaId;
+        this.descripcion = descripcion;
+        this.precio = precio;
+        this.rutaImagen = rutaImagen;
+        this.tiempo = tiempo;
+    }
+    
+
+    public Cena(int id) {
+        this.id = id;
     }
 
-    public Cena(int aInt, String string, int aInt0, String string0, int aInt1, String string1, int aInt2) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    
+
+    public String getDescripcion() {
+        return descripcion;
     }
 
+    public void setDescripcion(String Descripcion) {
+        this.descripcion = Descripcion;
+    }
+
+
+
+    public Cena() {
+    }
+    
     public int getId() {
         return id;
     }
@@ -150,8 +183,9 @@ public class Cena {
 
     @Override
     public String toString() {
-        return "Cena{" + "id=" + id + ", nombre=" + nombre + ", postreId=" + postreId + ", nombrePostre=" + nombrePostre + ", platilloId=" + platilloId + ", nombrePlatillo=" + nombrePlatillo + ", bebidaId=" + bebidaId + ", nombreBebida=" + nombreBebida + ", precio=" + precio + ", rutaImagen=" + rutaImagen + ", tiempo=" + tiempo + '}';
+        return "Desayunos{" + "id=" + id + ", nombre=" + nombre + ", postreId=" + postreId + ", nombrePostre=" + nombrePostre + ", platilloId=" + platilloId + ", nombrePlatillo=" + nombrePlatillo + ", bebidaId=" + bebidaId + ", nombreBebida=" + nombreBebida + ", Descripcion=" + descripcion + ", precio=" + precio + ", rutaImagen=" + rutaImagen + ", tiempo=" + tiempo + '}';
     }
     
     
+
 }

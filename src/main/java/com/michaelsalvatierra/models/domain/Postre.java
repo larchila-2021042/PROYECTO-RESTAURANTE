@@ -1,5 +1,14 @@
-
 package com.michaelsalvatierra.models.domain;
+
+import java.io.Serializable;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.persistence.Id;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 /**
  *
@@ -8,14 +17,36 @@ package com.michaelsalvatierra.models.domain;
  * @time 22:20:57
  *
  * Código Técnico: IN5BM
- * 
+ *
  */
-public class Postre {
+
+@Entity
+@Table(name = "postre")
+@NamedQueries({
+    @NamedQuery(name = "Postre.findAll", query = "from Postre"),
+    @NamedQuery(name = "Postre.find", query = "from Postre WHERE id = :id"
+            + "")
+})
+public class Postre implements Serializable {
+
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
+    @Column
     private String nombre;
+
+    @Column
     private String descripcion;
+
+    @Column
     private float precio;
+
+    @Column
     private float descuento;
+
+    @Column(name = "ruta_imagen")
     private String rutaImagen;
 
     public Postre() {
@@ -37,6 +68,11 @@ public class Postre {
         this.descuento = descuento;
         this.rutaImagen = rutaImagen;
     }
+    
+    public Postre(int id) {
+        this.id = id;
+    }
+
 
     public int getId() {
         return id;
@@ -91,6 +127,4 @@ public class Postre {
         return "Postre{" + "id=" + id + ", nombre=" + nombre + ", descripcion=" + descripcion + ", precio=" + precio + ", descuento=" + descuento + ", rutaImagen=" + rutaImagen + '}';
     }
 
-    
-    
 }

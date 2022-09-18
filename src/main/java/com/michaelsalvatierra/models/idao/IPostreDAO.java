@@ -13,11 +13,11 @@ public interface IPostreDAO {
     public List<Postre> getAll();
 
     //Insertar un registtro 
-    public boolean add(Postre postre);
+    public int add(Postre postre);
 
     //Actualizar un registro
-    public boolean update(Postre postre);
+    public int update(Postre postre);
 
     //Eliminar un registro
-    public boolean delete(Postre postre);
+    public int delete(Postre postre);
 }

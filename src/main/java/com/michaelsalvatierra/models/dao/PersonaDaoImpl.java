@@ -62,17 +62,22 @@ public class PersonaDaoImpl implements IPersonaDAO{
     }
 
     @Override
-    public boolean add(Persona persona) {
+    public int add(Persona persona) {
         throw new UnsupportedOperationException("Not supported yet."); 
     }
 
     @Override
-    public boolean update(Persona persona) {
+    public int update(Persona persona) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
-    public boolean delete(Persona persona) {
+    public int delete(Persona persona) {
         throw new UnsupportedOperationException("Not supported yet."); 
+    }
+
+    @Override
+    public Persona get(Persona persona) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

@@ -52,17 +52,17 @@ public class RolDaoImpl implements IRolDAO{
     }
 
     @Override
-    public boolean add(Rol rol) {
+    public int add(Rol rol) {
         throw new UnsupportedOperationException("Not supported yet."); 
     }
 
     @Override
-    public boolean update(Rol rol) {
+    public int update(Rol rol) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
-    public boolean delete(Rol rol) {
+    public int delete(Rol rol) {
         throw new UnsupportedOperationException("Not supported yet."); 
     }
 }

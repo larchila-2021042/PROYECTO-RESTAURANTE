@@ -1,9 +1,14 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-
 package com.michaelsalvatierra.models.domain;
+
+import java.io.Serializable;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 
 /**
  *
@@ -11,15 +16,31 @@ package com.michaelsalvatierra.models.domain;
  * @date Sep 2, 2022
  * @time 7:15:59 PM
  */
-public class Usuario {
+
+@Entity
+@Table(name = "usuario")
+@NamedQueries({
+    @NamedQuery(name = "Usuario.findAll", query = "from Usuario"),
+    @NamedQuery(name = "Usuario.find", query = "from Usuario WHERE correo = :correo")
+})
+public class Usuario implements Serializable{
+    
+    @Id
+    @Column(name = "correo")
     private String correo;
+    
     private String password;
     private int rol_id;
     private String rol;
     private int persona_id;
+    
     private String nombrePersona;
     
     public Usuario() {
+    }
+
+    public Usuario(String correo) {
+        this.correo = correo;
     }
 
     public Usuario(String correo, String password, int rol_id, String rol, int persona_id, String NombrePersona) {

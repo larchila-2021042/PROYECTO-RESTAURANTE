@@ -17,11 +17,11 @@ public interface IPedidosDAO {
     public List<Pedidos> getAll();
 
     //Insertar un registtro 
-    public boolean add(Pedidos pedidos);
+    public int add(Pedidos pedidos);
 
     //Actualizar un registro
-    public boolean update(Pedidos pedidos);
+    public int update(Pedidos pedidos);
 
     //Eliminar un registro
-    public boolean delete(Pedidos pedidos);
+    public int delete(Pedidos pedidos);
 }

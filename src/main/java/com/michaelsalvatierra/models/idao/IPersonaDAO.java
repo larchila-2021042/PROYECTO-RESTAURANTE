@@ -19,12 +19,13 @@ public interface IPersonaDAO {
     public List <Persona> getAll();
     
     //Insertar un registtro 
-    public boolean add(Persona persona); 
+    public int add(Persona persona); 
     
     //Actualizar un registro
-    public boolean update(Persona persona);
+    public int update(Persona persona);
     
     //Eliminar un registro
-    public boolean delete(Persona persona);
+    public int delete(Persona persona);
     
+    public Persona get(Persona persona);
 }

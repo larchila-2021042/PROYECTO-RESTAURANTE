@@ -17,11 +17,11 @@ public interface IDesayunosDAO {
     public List<Desayunos> getAll();
 
     //Insertar un registtro 
-    public boolean add(Desayunos desayunos);
+    public int add(Desayunos desayunos);
 
     //Actualizar un registro
-    public boolean update(Desayunos desayunos);
+    public int update(Desayunos desayunos);
 
     //Eliminar un registro
-    public boolean delete(Desayunos desayunos);
+    public int delete(Desayunos desayunos);
 }

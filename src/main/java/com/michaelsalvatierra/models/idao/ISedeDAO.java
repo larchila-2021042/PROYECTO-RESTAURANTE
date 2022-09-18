@@ -16,11 +16,11 @@ public interface ISedeDAO {
     public List<Sede> getAll();
 
     //Insertar un registtro 
-    public boolean add(Sede sede);
+    public int add(Sede sede);
 
     //Actualizar un registro
-    public boolean update(Sede sede);
+    public int update(Sede sede);
 
     //Eliminar un registro
-    public boolean delete(Sede sede);
+    public int delete(Sede sede);
 }

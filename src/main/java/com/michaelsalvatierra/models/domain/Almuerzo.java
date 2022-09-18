@@ -18,13 +18,66 @@ public class Almuerzo {
     private String nombrePlatillo;
     private int bebidaId;
     private String nombreBebida;
+    private String descripcion;
     private float precio;
     private String rutaImagen;
     private String tiempo;
 
+    public Almuerzo(int id, String nombre, int postreId, String nombrePostre, int platilloId, String nombrePlatillo, int bebidaId, String nombreBebida, String Descripcion, float precio, String rutaImagen, String tiempo) {
+        this.id = id;
+        this.nombre = nombre;
+        this.postreId = postreId;
+        this.nombrePostre = nombrePostre;
+        this.platilloId = platilloId;
+        this.nombrePlatillo = nombrePlatillo;
+        this.bebidaId = bebidaId;
+        this.nombreBebida = nombreBebida;
+        this.descripcion = Descripcion;
+        this.precio = precio;
+        this.rutaImagen = rutaImagen;
+        this.tiempo = tiempo;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String Descripcion) {
+        this.descripcion = Descripcion;
+    }
+
     public Almuerzo() {
     }
+
+    public Almuerzo(int id) {
+        this.id = id;
+    }
+
+    public Almuerzo(int id, String nombre, int postreId, int platilloId, int bebidaId, String descripcion, float precio, String rutaImagen, String tiempo) {
+        this.id = id;
+        this.nombre = nombre;
+        this.postreId = postreId;
+        this.platilloId = platilloId;
+        this.bebidaId = bebidaId;
+        this.descripcion = descripcion;
+        this.precio = precio;
+        this.rutaImagen = rutaImagen;
+        this.tiempo = tiempo;
+    }
+
+    public Almuerzo(String nombre, int postreId, int platilloId, int bebidaId, String descripcion, float precio, String rutaImagen, String tiempo) {
+        this.nombre = nombre;
+        this.postreId = postreId;
+        this.platilloId = platilloId;
+        this.bebidaId = bebidaId;
+        this.descripcion = descripcion;
+        this.precio = precio;
+        this.rutaImagen = rutaImagen;
+        this.tiempo = tiempo;
+    }
     
+    
+
     public Almuerzo(int id, String nombre, int postreId, String nombrePostre, int platilloId, String nombrePlatillo, int bebidaId, String nombreBebida, float precio) {
         this.id = id;
         this.nombre = nombre;
@@ -35,20 +88,6 @@ public class Almuerzo {
         this.bebidaId = bebidaId;
         this.nombreBebida = nombreBebida;
         this.precio = precio;
-    }
-    
-    public Almuerzo(int id, String nombre, int postreId, String nombrePostre, int platilloId, String nombrePlatillo, int bebidaId, String nombreBebida, float precio, String rutaImagen, String tiempo) {
-        this.id = id;
-        this.nombre = nombre;
-        this.postreId = postreId;
-        this.nombrePostre = nombrePostre;
-        this.platilloId = platilloId;
-        this.nombrePlatillo = nombrePlatillo;
-        this.bebidaId = bebidaId;
-        this.nombreBebida = nombreBebida;
-        this.precio = precio;
-        this.rutaImagen = rutaImagen;
-        this.tiempo = tiempo;
     }
 
     public int getId() {
@@ -141,9 +180,7 @@ public class Almuerzo {
 
     @Override
     public String toString() {
-        return "Almuerzo{" + "id=" + id + ", nombre=" + nombre + ", postreId=" + postreId + ", nombrePostre=" + nombrePostre + ", platilloId=" + platilloId + ", nombrePlatillo=" + nombrePlatillo + ", bebidaId=" + bebidaId + ", nombreBebida=" + nombreBebida + ", precio=" + precio + ", rutaImagen=" + rutaImagen + ", tiempo=" + tiempo + '}';
+        return "Desayunos{" + "id=" + id + ", nombre=" + nombre + ", postreId=" + postreId + ", nombrePostre=" + nombrePostre + ", platilloId=" + platilloId + ", nombrePlatillo=" + nombrePlatillo + ", bebidaId=" + bebidaId + ", nombreBebida=" + nombreBebida + ", Descripcion=" + descripcion + ", precio=" + precio + ", rutaImagen=" + rutaImagen + ", tiempo=" + tiempo + '}';
     }
-    
-    
-    
+
 }

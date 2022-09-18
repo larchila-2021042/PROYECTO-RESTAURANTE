@@ -25,10 +25,16 @@ import java.util.List;
  */
 public class DesayunosDaoImpl implements IDesayunosDAO {
 
-    private static final String SQL_SELECT = "SELECT combo.id, combo.nombre, po.id, po.nombre, pla.id, pla.nombre, b.id, b.nombre, combo.precio, combo.ruta_imagen,combo.tiempo FROM combo \n"
+    private static final String SQL_SELECT = "SELECT combo.id, combo.nombre, po.id, po.nombre, pla.id, pla.nombre, b.id, b.nombre, combo.descripcion, combo.precio, combo.ruta_imagen,combo.tiempo FROM combo \n"
             + "JOIN postre AS po ON combo.postre_id = po.id \n"
             + "JOIN platillo AS pla ON combo.platillo_id= pla.id \n"
             + "JOIN bebida AS b ON combo.bebida_id=b.id AND tiempo=\"DESAYUNO\";";
+
+    private static final String SQL_DELETE = "DELETE FROM combo WHERE id = ?;";
+    private static final String SQL_INSERT = "INSERT INTO combo (nombre, postre_id, platillo_id, bebida_id, descripcion, precio, ruta_imagen, tiempo) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+    private static final String SQL_SELECT_BY_ID = "SELECT id, nombre, postre_id, platillo_id, bebida_id, descripcion, precio, ruta_imagen, tiempo FROM combo WHERE id = ?";
+    private static final String SQL_UPDATE = "UPDATE combo SET nombre = ? , postre_id = ?, platillo_id = ?, bebida_id = ?, descripcion = ?, precio = ?, ruta_imagen = ?, tiempo = ? WHERE id = ?";
+
     private Connection con = null;
     private PreparedStatement pstmt = null;
     private ResultSet rs = null;
@@ -52,9 +58,10 @@ public class DesayunosDaoImpl implements IDesayunosDAO {
                         rs.getString(6),
                         rs.getInt(7),
                         rs.getString(8),
-                        rs.getFloat(9),
-                        rs.getString(10),
-                        rs.getString(11)
+                        rs.getString(9),
+                        rs.getDouble(10),
+                        rs.getString(11),
+                        rs.getString(12)
                 );
                 System.out.println(desayunos.toString());
                 listaDesayunos.add(desayunos);
@@ -72,17 +79,117 @@ public class DesayunosDaoImpl implements IDesayunosDAO {
     }
 
     @Override
-    public boolean add(Desayunos desayunos) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public int add(Desayunos desayunos) {
+        int rows = 0;
+        try {
+            con = Conexion.getConnection();
+            pstmt = con.prepareStatement(SQL_INSERT);
+            pstmt.setString(1, desayunos.getNombre());
+            pstmt.setInt(2, desayunos.getPostreId());
+            pstmt.setInt(3, desayunos.getPlatilloId());
+            pstmt.setInt(4, desayunos.getBebidaId());
+            pstmt.setString(5, desayunos.getDescripcion());
+            pstmt.setDouble(6, desayunos.getPrecio());
+            pstmt.setString(7, desayunos.getRutaImagen());
+            pstmt.setString(8, desayunos.getTiempo());
+
+            System.out.println(pstmt.toString());
+
+            rows = pstmt.executeUpdate();
+
+        } catch (SQLException e) {
+            System.err.println("Se produjo un error al intentar insertar el siguiente registro " + desayunos.toString());
+            e.printStackTrace(System.out);
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        } finally {
+            Conexion.close(pstmt);
+            Conexion.close(con);
+        }
+        return rows;
+    }
+
+    public Desayunos get(Desayunos desayunos) {
+        try {
+            con = Conexion.getConnection();
+            pstmt = con.prepareStatement(SQL_SELECT_BY_ID);
+            pstmt.setInt(1, desayunos.getId());
+            System.out.println(pstmt.toString());
+            rs = pstmt.executeQuery();
+            while (rs.next()) {
+                desayunos = new Desayunos(
+                        rs.getInt(1),
+                        rs.getString(2),
+                        rs.getInt(3),
+                        rs.getInt(4),
+                        rs.getInt(5),
+                        rs.getString(6),
+                        rs.getDouble(7),
+                        rs.getString(8),
+                        rs.getString(9)
+                );
+            }
+            System.out.println("desayunos: " + desayunos);
+        } catch (SQLException e) {
+            System.out.println("\nSQLException\n");
+            e.printStackTrace(System.out);
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        } finally {
+            Conexion.close(rs);
+            Conexion.close(pstmt);
+            Conexion.close(con);
+        }
+        return desayunos;
     }
 
     @Override
-    public boolean update(Desayunos desayunos) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public int update(Desayunos desayunos) {
+        int rows = 0;
+        try{
+            con = Conexion.getConnection();
+            pstmt = con.prepareStatement(SQL_UPDATE);
+            System.out.println(desayunos.toString());
+            pstmt.setString(1, desayunos.getNombre());
+            pstmt.setInt(2, desayunos.getPostreId());
+            pstmt.setInt(3, desayunos.getPlatilloId());
+            pstmt.setInt(4, desayunos.getBebidaId());
+            pstmt.setString(5, desayunos.getDescripcion());
+            pstmt.setDouble(6, desayunos.getPrecio());
+            pstmt.setString(7, desayunos.getRutaImagen());
+            pstmt.setString(8, desayunos.getTiempo());
+            pstmt.setInt(9, desayunos.getId());
+            System.out.println(pstmt.toString());
+            rows = pstmt.executeUpdate();
+        }catch(SQLException e){
+            System.err.println("Se produjo un error al intentar actualizar el siguiente registro: " 
+                    + desayunos.toString());
+            e.printStackTrace(System.out);
+        }catch(Exception e){
+            e.printStackTrace(System.out);
+        } finally{
+            Conexion.close(pstmt);
+            Conexion.close(con);
+        }
+        return rows;
     }
 
     @Override
-    public boolean delete(Desayunos desayunos) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public int delete(Desayunos desayunos) {
+        int rows = 0;
+        try {
+            con = Conexion.getConnection();
+            pstmt = con.prepareStatement(SQL_DELETE);
+            pstmt.setInt(1, desayunos.getId());
+            System.err.println(pstmt.toString());
+            rows = pstmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace(System.out);
+            System.err.println("Se produjo un erro al intentar eliminar el registro con el id " + desayunos.getId());
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return rows;
     }
+
 }

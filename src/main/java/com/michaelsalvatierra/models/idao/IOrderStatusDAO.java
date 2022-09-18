@@ -13,11 +13,11 @@ public interface IOrderStatusDAO {
     public List<OrderStatus> getAll();
 
     //Insertar un registtro 
-    public boolean add(OrderStatus orderStatus);
+    public int add(OrderStatus orderStatus);
 
     //Actualizar un registro
-    public boolean update(OrderStatus orderStatus);
+    public int update(OrderStatus orderStatus);
 
     //Eliminar un registro
-    public boolean delete(OrderStatus orderStatus);
+    public int delete(OrderStatus orderStatus);
 }

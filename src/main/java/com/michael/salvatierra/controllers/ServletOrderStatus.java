@@ -11,6 +11,7 @@ package com.michael.salvatierra.controllers;
  */
 import com.michaelsalvatierra.models.domain.OrderStatus;
 import com.michaelsalvatierra.models.dao.OrderStatusDaoImpl;
+import com.michaelsalvatierra.models.dao.OrderStatusDaoJPA;
 import java.io.IOException;
 import java.util.List;
 import javax.servlet.http.HttpServlet;
@@ -24,7 +25,40 @@ import javax.servlet.annotation.WebServlet;
 public class ServletOrderStatus extends HttpServlet{
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        request.setCharacterEncoding("UTF-8");
+        String accion = request.getParameter("accion");
 
+        if (accion != null) {
+            switch (accion) {
+                case "insertar":
+                    insertarOderStatus(request, response);
+                    break;
+                case "actualizar":
+                    actualizarOrderStatus(request, response);
+            }
+        }
+    }
+    
+    private void actualizarOrderStatus(HttpServletRequest request, HttpServletResponse response) throws IOException{
+        int id = Integer.parseInt(request.getParameter("idOrderStatus"));
+        String status = request.getParameter("status");        
+        OrderStatus orderStatus = new OrderStatus(id, status);
+        System.out.println(orderStatus.toString());
+        
+        //int registrosActualizados = new EstudianteDaoImpl().update(estudiante);
+        int registrosActualizados = new OrderStatusDaoJPA().update(orderStatus);
+        
+        listarOrderStatus(request, response);
+    }
+
+    private void insertarOderStatus(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        String status = request.getParameter("status");
+        OrderStatus orderStatus = new OrderStatus(status);
+        System.out.println(orderStatus);
+
+        int registrosInsertados = new OrderStatusDaoJPA().add(orderStatus);
+        
+        listarOrderStatus(request, response);
     }
 
     @Override
@@ -37,10 +71,10 @@ public class ServletOrderStatus extends HttpServlet{
                     listarOrderStatus(request, response);
                     break;
                 case "editar":
-                    //Otras acciones
+                    editarOrderStatus(request, response);
                     break;
                 case "eliminar":
-                    // ...
+                    eliminarOderStatus(request, response);
                     break;
                 default:
 
@@ -49,10 +83,40 @@ public class ServletOrderStatus extends HttpServlet{
         }
     }
     
-    private void listarOrderStatus(HttpServletRequest request, HttpServletResponse response) throws IOException{
-        List<OrderStatus> listarCenas = new OrderStatusDaoImpl().getAll();
+     private void editarOrderStatus(HttpServletRequest request, HttpServletResponse response) throws IOException{
+        int idOrderStatus = Integer.parseInt(request.getParameter("id"));
+        
+        OrderStatus orderStatus = new OrderStatusDaoJPA().get(new OrderStatus(idOrderStatus));
+        
+        System.out.println(orderStatus.toString());
+        
         HttpSession sesion = request.getSession();
-        sesion.setAttribute("data", listarCenas);
-        response.sendRedirect("orderStatus/OrderStatus.jsp");
+        sesion.setAttribute("orderStatus", orderStatus);
+        response.sendRedirect(request.getContextPath() + "/" + "orderStatus/editar-orderStatus.jsp");
+    }
+    
+    
+    private void eliminarOderStatus(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        int idOrderStatus = Integer.parseInt(request.getParameter("id"));
+        OrderStatus orderStatus = new OrderStatusDaoJPA().get(new OrderStatus(idOrderStatus));
+
+        int registrosEliminados = new OrderStatusDaoJPA().delete(orderStatus);
+
+        if (registrosEliminados >= 1) {
+            System.out.println("El registro fue eliminado con exito");
+        } else {
+            System.err.println("Se produjo un error al intentar eliminar el siguiente estudiante: " + orderStatus.toString());
+        }
+
+        listarOrderStatus(request, response);
+    }
+    
+    private void listarOrderStatus(HttpServletRequest request, HttpServletResponse response) throws IOException{
+        //List<Bebida> listaBebidas = new BebidaDaoImpl().getAll();
+
+        List<OrderStatus> listaOrderStatus = new OrderStatusDaoJPA().getAll();
+        HttpSession sesion = request.getSession();
+        sesion.setAttribute("data", listaOrderStatus);
+        response.sendRedirect(request.getContextPath() + "/" + "orderStatus/OrderStatus.jsp");
     }
 }

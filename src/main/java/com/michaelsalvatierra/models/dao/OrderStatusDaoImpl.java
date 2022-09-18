@@ -56,17 +56,17 @@ public class OrderStatusDaoImpl implements IOrderStatusDAO {
     }
 
     @Override
-    public boolean add(OrderStatus orderStatus) {
+    public int add(OrderStatus orderStatus) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public boolean update(OrderStatus orderStatus) {
+    public int update(OrderStatus orderStatus) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public boolean delete(OrderStatus orderStatus) {
+    public int delete(OrderStatus orderStatus) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     

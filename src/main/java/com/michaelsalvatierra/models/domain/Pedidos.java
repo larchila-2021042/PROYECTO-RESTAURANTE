@@ -1,8 +1,14 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.michaelsalvatierra.models.domain;
+
+import java.io.Serializable;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 
 /**
  *
@@ -12,14 +18,34 @@ package com.michaelsalvatierra.models.domain;
  *
  * Codigo Tecnico: IN5BM
  */
-public class Pedidos {
+@Entity
+ @Table(name = "pedidos")
+ @NamedQueries({
+    @NamedQuery(name="Pedidos.findAll", query = "from Pedidos"), 
+    @NamedQuery(name="Pedidos.find", query = "from Pedidos WHERE id= :id")
+})
+public class Pedidos implements Serializable {
 
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY) 
     private int id;
+    
+    @Column(name = "tarjeta_id")
     private String TarjetaId;
+    
+    @Column(name = "combo_id")
     private int comboId;
+    
+    @Column(name = "usuario_id")
     private String usuarioId;
+    
+    @Column(name = "sede_id")
     private int sedeId;
+    
+    @Column(name = "order_status_id")
     private int orderStatusId;
+    
     private String comentario;
 
     public Pedidos(int id, String TarjetaId, int comboId, String usuarioId, int sedeId, int orderStatusId, String comentario) {
@@ -39,14 +65,19 @@ public class Pedidos {
         this.id = id;
     }
 
-    public Pedidos(int id, String TarjetaId, int comboId, String usuarioId, int sedeId, int orderStatusId) {
-        this.id = id;
+    public Pedidos(String TarjetaId, int comboId, String usuarioId, int sedeId, int orderStatusId, String comentario) {
         this.TarjetaId = TarjetaId;
         this.comboId = comboId;
         this.usuarioId = usuarioId;
         this.sedeId = sedeId;
         this.orderStatusId = orderStatusId;
+        this.comentario = comentario;
     }
+
+
+
+    
+    
 
     public int getId() {
         return id;

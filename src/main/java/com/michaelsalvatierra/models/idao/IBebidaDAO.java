@@ -13,11 +13,11 @@ public interface IBebidaDAO {
     public List<Bebida> getAll();
 
     //Insertar un registtro 
-    public boolean add(Bebida bebida);
+    public int add(Bebida bebida);
 
     //Actualizar un registro
-    public boolean update(Bebida bebida);
+    public int update(Bebida bebida);
 
     //Eliminar un registro
-    public boolean delete(Bebida bebida);
+    public int delete(Bebida bebida);
 }

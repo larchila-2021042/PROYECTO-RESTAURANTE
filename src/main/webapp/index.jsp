@@ -22,7 +22,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-2 col-md-2 col-2">
-                    <a href="./login.jsp">
+                    <a href="${pageContext.request.contextPath}/login/login.jsp">
                         <i class="fa-solid fa-bars fa-2x settings"></i>
                     </a>
                 </div>
@@ -32,7 +32,7 @@
                       </a>
                 </div>
                 <div class="col-lg-2 col-md-2 col-2">
-                    <a href="${pageContext.request.contextPath}/carrito.jsp">
+                    <a href="${pageContext.request.contextPath}/carrito/carrito.jsp">
                         <i class="fa-solid fa-cart-shopping fa-2x carrito"></i>
                     </a>
 

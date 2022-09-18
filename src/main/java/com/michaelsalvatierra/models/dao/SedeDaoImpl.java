@@ -58,17 +58,17 @@ public class SedeDaoImpl implements ISedeDAO {
     }
 
     @Override
-    public boolean add(Sede sede) {
+    public int add(Sede sede) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public boolean update(Sede sede) {
+    public int update(Sede sede) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public boolean delete(Sede sede) {
+    public int delete(Sede sede) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

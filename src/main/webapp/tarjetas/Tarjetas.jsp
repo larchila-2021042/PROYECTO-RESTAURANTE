@@ -64,14 +64,61 @@
     <main>
         <section id="actions" class="py-3">
             <div class="container">
-        <div class="row ">
+        <div class="row ">  
             <div class="col-md-12 col-sm-12 col-12 upbar">
                 <hr class="lineas-separacion">
-                    <button type="button" class="btn btn-secondary btn-agregar">Agregar Usuarios</button>
+                    <button type="button" class="btn btn-secondary btn-agregar" data-bs-toggle="modal" data-bs-target="#addModal">Agregar Tarjeta</button>
                 <hr class="lineas-separacion">
             </div>
         </div>
             </div>
+        </section>
+
+        <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Ingresa los datos de la tarjeta</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form method="POST" action="${pageContext.request.contextPath}/ServletTarjeta" class="was-validated">
+                        
+                        <div class="modal-body">
+
+                            <div class="mb-3">
+                                <label for="numero_de_tarjeta" class="col-form-label">Numero de tarjeta</label>
+                                <input type="text" class="form-control" id="numero_de_tarjeta" name="numero_de_tarjeta" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="nombre_en_tarjeta" class="col-form-label">Nombre de la tarjeta</label>
+                                <input type="text" class="form-control" id="nombre_en_tarjeta" name="nombre_en_tarjeta" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="fecha_vencimiento" class="col-form-label">Fecha de vencimiento</label>
+                                <input type="date" class="form-control" id="fecha_vencimiento" name="fecha_vencimiento">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="tipo_de_tarjeta" class="col-form-label">Tipo de Tarjeta</label>
+                                <input type="text" class="form-control" id="tipo_de_tarjeta" name="tipo_de_tarjeta" required>
+                            </div>
+
+
+                            <input type="hidden" value="insertar" id="accion" name="accion">
+                            
+                        </div>
+                        
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn btn-primary">Guardar</button>
+                        </div>
+                        
+                    </form>
+                </div>
+            </div>
+        </div>
         </section>
         
         <section id="estudiante">
@@ -103,10 +150,15 @@
                                         <td>${tarjeta.fechaVencimiento}</td>
                                         <td>${tarjeta.tipoDeTarjeta}</td>
                                         <td>
-                                            <i class="far fa-edit"></i>Editar
+                                            <a class="btn btn-warning" href="${pageContext.request.contextPath}/ServletTarjeta?accion=editar&numero_de_tarjeta=${tarjeta.numeroDeTarjeta}">
+                                                <i class="fa fa-edit"></i> Editar
+                                            </a>
                                         </td>
-                                        <td>
-                                            <i class="fa fa-trash-alt"></i>Eliminar
+                                         <td>
+                                            <a class="btn btn-danger" href="${pageContext.request.contextPath}/ServletTarjeta?accion=eliminar&numero_de_tarjeta=${tarjeta.numeroDeTarjeta}">
+                                                <i class="far fa-trash-alt"></i> Eliminar
+                                            </a>  
+                      
                                         </td>
                                     </tr>
                                 </c:forEach>

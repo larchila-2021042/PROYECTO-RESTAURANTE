@@ -92,7 +92,7 @@ DROP TABLE IF EXISTS postre;
 CREATE TABLE IF NOT EXISTS postre(
 	id INT NOT NULL AUTO_INCREMENT,
     nombre VARCHAR(50) NOT NULL,
-    descripcion VARCHAR(50) ,
+    descripcion VARCHAR(255) ,
     precio FLOAT NOT NULL,
     descuento FLOAT NOT NULL,
     ruta_imagen VARCHAR(255),
@@ -116,7 +116,7 @@ DROP TABLE IF EXISTS bebida;
 CREATE TABLE IF NOT EXISTS bebida(
 	id INT NOT NULL AUTO_INCREMENT,
     nombre VARCHAR(50) NOT NULL,
-    descripcion VARCHAR(50) ,
+    descripcion VARCHAR(255) ,
     precio FLOAT NOT NULL,
     descuento FLOAT NOT NULL,
     ruta_imagen VARCHAR(255),
@@ -132,6 +132,7 @@ CREATE TABLE IF NOT EXISTS combo(
     postre_id INT NOT NULL,
     platillo_id INT NOT NULL,
     bebida_id INT NOT NULL,
+    descripcion VARCHAR(255),
     precio FLOAT NOT NULL,
     ruta_imagen VARCHAR(255),
     tiempo VARCHAR(255),
@@ -335,144 +336,150 @@ VALUES("375096974512357", "American Express", "05/06/24", "Crédito");
 -- ----------------------
 -- Inserciones de postre
 -- ----------------------
-INSERT INTO postre(nombre, precio, descuento)
-VALUES("Pie de queso", "20.99", "0.25");
+INSERT INTO postre(nombre, descripcion, precio, descuento, ruta_imagen)
+VALUES("Pie de queso", "Este pie de queso tradicional tiene una consistencia cremosa pero ligera al mismo tiempo. Un postre ideal para tus comidas o fiestas.", "20.99", "0.25", "/pie_de_queso.png");
 
-INSERT INTO postre(nombre, precio, descuento)
-VALUES("Pie de Manzana", "20.50", "0.00");
+INSERT INTO postre(nombre,descripcion ,precio, descuento, ruta_imagen)
+VALUES("Pie de Manzana", "El pie de manzana es un postre que se puede degustar frío o caliente y consiste en una masa suave o crujiente rellena de manzanas","20.50", "0.00", "/pie_de_manzana.png");
 
-INSERT INTO postre(nombre, precio, descuento)
-VALUES("Helado de chocalate", "15.00", "0.45");
+INSERT INTO postre(nombre,descripcion ,precio, descuento, ruta_imagen)
+VALUES("Helado de chocolate", "Helados de chocolate negro. El intenso sabor que caracteriza a estos helados, no puede compararse con nada que hayas probado.","15.00", "0.45", "/helado_de_chocolate.png");
 
-INSERT INTO postre(nombre, precio, descuento)
-VALUES("Helado de fresa", "15.00", "0.13");
+INSERT INTO postre(nombre, descripcion,precio, descuento, ruta_imagen)
+VALUES("Helado de fresa","El helado de fresa artesano es de los helados más deliciosos que pueden existir.", "15.00", "0.45", "/helado_de_fresa.jpg");
 
-INSERT INTO postre(nombre, precio, descuento)
-VALUES("Banana split", "25.00", "0.00");
+INSERT INTO postre(nombre,descripcion ,precio, descuento, ruta_imagen)
+VALUES("Banana split", "Disfrute de unas deliciosas bolas de elado acompañanda de una banana recien cosechada.","25.00", "0.00", "/banana_split.png");
 
-INSERT INTO postre(nombre, precio, descuento)
-VALUES("Crepa con Nutella", "30.00", "0.10");
+INSERT INTO postre(nombre,descripcion, precio, descuento, ruta_imagen)
+VALUES("Crepa con Nutella", "Tortita fina de pasta dulce o salada, flexible y ligera, que se cuece en un sartén.","30.00", "0.10", "/Crepa.png");
 
-INSERT INTO postre(nombre, precio, descuento)
-VALUES("Pie de Queso", "70.00", "0.00");
+INSERT INTO postre(nombre, descripcion, precio, descuento, ruta_imagen)
+VALUES("Pie de queso", "Este pie de queso tradicional tiene una consistencia cremosa pero ligera al mismo tiempo. Un postre ideal para tus comidas o fiestas.", "20.99", "0.25", "/pie_de_queso.png");
 
-INSERT INTO postre(nombre, precio, descuento)
-VALUES("Croissant Simple", "8.50", "0.17");
+INSERT INTO postre(nombre, descripcion,precio, descuento, ruta_imagen)
+VALUES("Croissant Simple", "Pocos son capaces de resistirse a su crujiente textura, su particular sabor entre dulce y salado y el potente aroma de la mantequilla.","8.50", "0.17", "/croissant.png");
 
-INSERT INTO postre(nombre, precio, descuento)
-VALUES("Cañoncito de Nutella", "16.50", "0.19");
+INSERT INTO postre(nombre, descripcion,precio, descuento, ruta_imagen)
+VALUES("Cañoncito de Nutella","Pasta de hojaldre crujiente y semidulce enrollada y rellena con abundante Nutella.","16.50", "0.19", "/canon_de nutella.png");
 
-INSERT INTO postre(nombre, precio, descuento)
-VALUES("Cinnamon Roll", "7.50", "0.17");
+INSERT INTO postre(nombre, descripcion ,precio, descuento, ruta_imagen)
+VALUES("Cinnamon Roll", "Un sabor inigualable de roles de canela con pasas para disfrutar durante la merienda." , "7.50", "0.17", "/Cinnamon.png");
 
 -- ------------------------
 -- Inserciones en plantillo
 -- ------------------------
-INSERT INTO platillo(nombre, precio, descuento)
-VALUES("Carpaccio Il Jamone", "95.00", "0.17");
+INSERT INTO platillo(nombre, precio, descripcion, descuento,ruta_imagen)
+VALUES("Carpaccio Il Jamone", "95.00","Delicioso Carpaccio", "0.17","/carpaccio-final.png");
 
-INSERT INTO platillo(nombre, precio, descuento)
-VALUES("Calzone italianizimo", "30.00", "0.40");
+INSERT INTO platillo(nombre, precio, descripcion, descuento,ruta_imagen)
+VALUES("Calzone italianizimo", "30.00","Delicioso Calzone", "0.40","/calzone_final.png");
 
-INSERT INTO platillo(nombre, precio, descuento)
-VALUES("Insalata Capresse", "65.00", "0.00");
+INSERT INTO platillo(nombre, precio, descripcion, descuento,ruta_imagen)
+VALUES("Insalata Capresse", "65.00","Deliciosa Ensalada", "0.00","/insalata_final.png");
 
-INSERT INTO platillo(nombre, precio, descuento)
-VALUES("Minestrone", "60.00", "0.00");
+INSERT INTO platillo(nombre, precio, descripcion, descuento,ruta_imagen)
+VALUES("Minestrone", "60.00","Delicioso Minestrone", "0.00","/mines_final.png");
 
-INSERT INTO platillo(nombre, precio, descuento)
-VALUES("Lasaña dalla casa", "75.00", "0.25");
+INSERT INTO platillo(nombre, precio, descripcion, descuento,ruta_imagen)
+VALUES("Lasaña dalla casa", "75.00","Deliciosa lasana", "0.25","/lasana_final.png");
 
-INSERT INTO platillo(nombre, precio, descuento)
-VALUES("Mostaccioli", "75.00", "0.41");
+INSERT INTO platillo(nombre, precio, descripcion, descuento,ruta_imagen)
+VALUES("Mostaccioli", "75.00","Delicioso Mostaccioli", "0.41","/mosta-final.png");
 
-INSERT INTO platillo(nombre, precio, descuento)
-VALUES("Pasta a la carbonara", "75.00", "0.00");
+INSERT INTO platillo(nombre, precio, descripcion, descuento,ruta_imagen)
+VALUES("Pasta a la carbonara", "75.00","Deliciosa Pasta a la carbonara", "0.00","/pasta-final.png");
 
-INSERT INTO platillo(nombre, precio, descuento)
-VALUES("Ravioles in Rossa", "80.00", "0.28");
+INSERT INTO platillo(nombre, precio, descripcion, descuento,ruta_imagen)
+VALUES("Ravioles in Rossa", "80.00","Deliciosos Ravioles", "0.28","/ravioles-final.png");
 
-INSERT INTO platillo(nombre, precio, descuento)
-VALUES("Pizza Margherita", "125.00", "0.00");
+INSERT INTO platillo(nombre, precio, descripcion, descuento,ruta_imagen)
+VALUES("Pizza Margherita", "125.00","Delicioso Pizza", "0.00","/pizza-final.png");
 
-INSERT INTO platillo(nombre, precio, descuento)
-VALUES("Rissoto Stracceti", "80.00", "0.00");
+INSERT INTO platillo(nombre, precio, descripcion, descuento,ruta_imagen)
+VALUES("Rissoto Stracceti", "80.00","Delicioso Risotto", "0.00","/risoto-final.png");
+
+INSERT INTO platillo(nombre, precio, descripcion, descuento,ruta_imagen)
+VALUES("Omelette", "30.00","Delicioso Omelette", "0.00","/omelete.png");
 
 -- -------------------------
 -- Inserciones en bebida
 -- -------------------------
-INSERT INTO bebida(nombre, precio, descuento)
-VALUES("Coca-Cola", "5.99", 0.00);
+-- -------------------------
+-- Inserciones en bebida
+-- -------------------------
+INSERT INTO bebida(nombre, descripcion, precio, descuento, ruta_imagen)
+VALUES("Coca-Cola", "Disfrute de una refrescante gaseosa Coca-Cola de 1.25 litros. A tan solo 5.99.","5.99", 0.00, "/coca_cola_larga.png");
 
-INSERT INTO bebida(nombre, precio, descuento)
-VALUES("Té frío", "9.99", 0.00);
+INSERT INTO bebida(nombre, descripcion, precio, descuento, ruta_imagen)
+VALUES("Té frío", "Disfrute de una refrescante té frío a un precio de tan solo 9.99 Quetzales.", "9.99", 0.00, "/te_alargado.png");
 
-INSERT INTO bebida(nombre, precio, descuento)
-VALUES("Vino tinto SOLEA", "139.99", 0.35);
+INSERT INTO bebida(nombre, descripcion, precio, descuento, ruta_imagen)
+VALUES("Vino tinto SOLEA", "Disfrute de un refinado vino tinto de la mejor calidad a un precio de 139.99 Quetzales.", "139.99", 0.35, "/vino_tinto_alargado.png");
 
-INSERT INTO bebida(nombre, precio, descuento)
-VALUES("Vino blanco HIGHLAND MANOR", "139.99", 0.23);
+INSERT INTO bebida(nombre, descripcion, precio, descuento, ruta_imagen)
+VALUES("Vino blanco HIGHLAND MANOR", "Disfrute de un refinado vino blanco de la mejor calidad a un precio de 139.99 Quetzales.", "139.99", 0.23, "/vino_blanco_alargado.png");
 
-INSERT INTO bebida(nombre, precio, descuento)
-VALUES("Limonada", "12.99", 0.12);
+INSERT INTO bebida(nombre, descripcion, precio, descuento, ruta_imagen)
+VALUES("Limonada", "Disfrute de una refrescante limonada a un precio de tan solo 12.99 Quetzales.", "12.99", 0.12, "/limonada_alargada.png");
 
-INSERT INTO bebida(nombre, precio, descuento)
-VALUES("Jugo de naranja", "11.99", 0.00);
+INSERT INTO bebida(nombre, descripcion, precio, descuento, ruta_imagen)
+VALUES("Jugo de naranja", "Disfrute de un delicioso jugo de naranja de la mejor calidad a tan solo 11.99 Quetzales.", "11.99", 0.00, "/jugo_naranja_alargado.png");
 
-INSERT INTO bebida(nombre, precio, descuento)
-VALUES("Cafe Negro", "12.99", 0.00);
+INSERT INTO bebida(nombre, descripcion, precio, descuento, ruta_imagen)
+VALUES("Cafe Negro", "Café hecho con los mejores granos de nuestra cosecha, caliente y listo para que lo tomes. A tan solo 12.99.", "12.99", 0.00, "/pruebaCafeNegro1.png");
 
-INSERT INTO bebida(nombre, precio, descuento)
-VALUES("Capuchinno", "19.99", 0.00);
+INSERT INTO bebida(nombre, descripcion, precio, descuento, ruta_imagen)
+VALUES("Capuchinno", "Disfrute de una deliciosa taza de capuccino a tan solo 19.99 quetzales.","19.99", 0.00, "/capuchino_alargado.png");
 
-INSERT INTO bebida(nombre, precio, descuento)
-VALUES("Horchata", "12.99", 0.15);
+INSERT INTO bebida(nombre, descripcion, precio, descuento, ruta_imagen)
+VALUES("Horchata", "Disfrute de una deliciosa y refrescante horchata a un precio de tan solo 12.99 Quetzales.", "12.99", 0.15, "/horchata_alargada.png");
 
-INSERT INTO bebida(nombre, precio, descuento)
-VALUES("Malteada de Fresa", "19.99", 0.00);
+INSERT INTO bebida(nombre, descripcion, precio, descuento, ruta_imagen)
+VALUES("Malteada de Fresa", "Disfrute de una deliciosa malteada de chocolate a un precio de tan solo 19.99 Quetzales.", "19.99", 0.00, "/malteada_fresa_alargada.png");
 
-INSERT INTO bebida(nombre, precio, descuento)
-VALUES("Malteada de Chocolate", "19.99", 0.00);
+INSERT INTO bebida(nombre, descripcion, precio, descuento, ruta_imagen)
+VALUES("Malteada de Chocolate", "Disfrute de una deliciosa malteada de chocolate a un precio de tan solo 19.99 Quetzales.", "19.99", 0.00, "/malteada_chocolate_alargada.png");
 
-INSERT INTO bebida(nombre, precio, descuento)
-VALUES("Sprite", "5.99", 0.00);
+INSERT INTO bebida(nombre, descripcion, precio, descuento, ruta_imagen)
+VALUES("Sprite", "Disfrute de una refrescante gaseosa en lata Sprite, a un precio de tan solo 5.99 Quetzales.", "5.99", 0.00, "/sprite_alargada.png");
 
-INSERT INTO bebida(nombre, precio, descuento)
-VALUES("Fanta", "5.99", 0.00);
+INSERT INTO bebida(nombre, descripcion, precio, descuento, ruta_imagen)
+VALUES("Fanta", "Disfrute de una refrescante gaseosa en lata fanta, a un precio de tan solo 5.99 Quetzales.","5.99", 0.00, "/fanta_alargada.png");
+
 
 -- ---------------------------
 -- Inserciones en combo
 -- ---------------------------
-INSERT INTO combo(nombre, postre_id, platillo_id, bebida_id, precio, tiempo)
-VALUES("Combo desayuno 1", 1, 1, 2, "35.99","DESAYUNO");
+INSERT INTO combo(nombre, postre_id, platillo_id, bebida_id, descripcion, precio, ruta_imagen,tiempo)
+VALUES("Combo desayuno 1", 1, 11, 2,"Combo fenomenal si comienzas el dia. Este combo Incluye lo siguiente: " , "30.00", "/prueba-desayuno.png","DESAYUNO");
 
-INSERT INTO combo(nombre, postre_id, platillo_id, bebida_id, precio,tiempo)
-VALUES("Combo almuerzo 1", 2, 2, 1, "50.00","ALMUERZO");
+INSERT INTO combo(nombre, postre_id, platillo_id, bebida_id, descripcion, precio,tiempo,  ruta_imagen)
+VALUES("Combo almuerzo 1", 2, 2, 1, "Un combo ideal para aquellos que disfruten a lo italian. Incluye Pie de Manzana, Calzone Italianisimo y una Clasica Coca-Cola.", "50.00","ALMUERZO","/menu_almuerzo_1_alargado.png");
 
-INSERT INTO combo(nombre, postre_id, platillo_id, bebida_id, precio, tiempo)
-VALUES("Combo fit", 3, 3, 2, "47.00", "CENA");
+INSERT INTO combo(nombre, postre_id, platillo_id, bebida_id, descripcion, precio, tiempo, ruta_imagen)
+VALUES("Combo fit", 3, 3, 2, "Combo fenomenal si guardas la linea. Incluye un Helado,una Ensalada y un Te frio.", "47.00", "CENA", "/combo_fit_alargado.png");
 
-INSERT INTO combo(nombre, postre_id, platillo_id, bebida_id, precio, tiempo)
-VALUES("Combo casual", 4, 4, 5, "50.00", "CENA");
+INSERT INTO combo(nombre, postre_id, platillo_id, bebida_id, descripcion, precio, tiempo, ruta_imagen)
+VALUES("Combo casual", 4, 4, 5, "Un combo que incluye un Helado un delicioso Minestrone y una Limonada.", "50.00", "CENA", "/combo_casual_cena.png");
 
-INSERT INTO combo(nombre, postre_id, platillo_id, bebida_id, precio, tiempo)
-VALUES("Combo pasta 1", 5, 5, 2, "45.00", "ALMUERZO");
+INSERT INTO combo(nombre, postre_id, platillo_id, bebida_id, descripcion, precio, tiempo,  ruta_imagen)
+VALUES("Combo pasta 1", 5, 5, 2, "Un combo clasico para los amantes de la pasta. Incluye una Banana Split, una deliciosa Lasana dalla Casa, y un Te frio", "45.00", "ALMUERZO", "/menu_pasta_alargado.png");
 
-INSERT INTO combo(nombre, postre_id, platillo_id, bebida_id, precio, tiempo)
-VALUES("Combo Frutti", 9, 10, 8, "300.00","CENA");
+INSERT INTO combo(nombre, postre_id, platillo_id, bebida_id, descripcion, precio, tiempo, ruta_imagen)
+VALUES("Combo Frutti", 9, 10, 8, "Incluye un Cañoncito de Nutella, Rissoto Stracceti y un Capuchinno.","300.00","CENA", "/combo_frutti_alargado.png");
 
-INSERT INTO combo(nombre, postre_id, platillo_id, bebida_id, precio, tiempo)
-VALUES("Combo xibal zuppe", 7, 8, 6, "450.00","DESAYUNO");
+INSERT INTO combo(nombre, postre_id, platillo_id, bebida_id, descripcion, precio, ruta_imagen,tiempo)
+VALUES("Combo xibal zuppe", 7, 8, 6, "Combo fenomenal si para los amantes de la comida italiana este combo Incluye lo siguiente: " ,"85.00", "/zupe-prueba.png","DESAYUNO");
 
-INSERT INTO combo(nombre, postre_id, platillo_id, bebida_id, precio, tiempo)
-VALUES("Combo Parmigiana 1", 6, 6, 7, "250.00","DESAYUNO");
+INSERT INTO combo(nombre, postre_id, platillo_id, bebida_id, descripcion, precio, ruta_imagen,tiempo)
+VALUES("Combo parmigiana", 6, 6, 7, "Un combo para relajarse de mañana, Este combo incluye lo siguiente: " ,"85.00", "/prueba-parm.png","DESAYUNO");
 
-INSERT INTO combo(nombre, postre_id, platillo_id, bebida_id, precio, tiempo)
-VALUES("Combo Cacciatora", 10, 7, 10, "169.00","ALMUERZO");
+INSERT INTO combo(nombre, postre_id, platillo_id, bebida_id, descripcion, precio, tiempo, ruta_imagen)
+VALUES("Combo Cacciatora", 10, 7, 10, "Combo perfecto para unos bonitos recuerdos. Inclute Cinnamon Rolls, Exquisita Pasta a la Carbonara y una Malteada De Fresa.","169.00","ALMUERZO","/menu_cacciatora_alargado.png");
 
-INSERT INTO combo(nombre, postre_id, platillo_id, bebida_id, precio, tiempo)
-VALUES("Combo pizza", 8, 9, 9, "150.00","ALMUERZO");
-
+INSERT INTO combo(nombre, postre_id, platillo_id, bebida_id, descripcion, precio, tiempo, ruta_imagen)
+VALUES("Combo pizza", 8, 9, 9, "Un combo para quedar saciados. Incluye un Croissant simple, una deleitosa Pizza Margherita y una Horchata","150.00","ALMUERZO","/menu_pizza_alargado.png");
 -- ------------------------
 -- Inserciones pedidos
 -- -------------------------
@@ -506,20 +513,29 @@ VALUES("6011766059532127", 9, 'pedrorodriguez@fornobistro.gt.com', 9, 3);
 INSERT INTO pedidos(tarjeta_id, combo_id, usuario_id, sede_id, order_status_id)
 VALUES("375096974512357", 10, 'emiliovasquez@fornobistro.gt.com', 10, 1);
 
-SELECT * FROM persona;
-SELECT * FROM rol;
-SELECT * FROM usuario;
-SELECT * FROM sede;
-SELECT * FROM tarjeta;
-SELECT * FROM pedidos;
-SELECT * FROM order_status;
+/*SELECT PARA PLATILLOS, POSTRES Y BEBIDAS */
+SELECT id, nombre, descripcion,precio,  descuento, ROUND(precio -(precio* descuento),2) AS precio_con_descuento , ruta_imagen FROM bebida;
 
 /*SELECT PARA MOSTRAR LOS COMBOS SU NOMBRE Y SU TIEMPO PARA SE SERVIDOS*/
-SELECT combo.nombre, po.nombre,pla.nombre,b.nombre, combo.tiempo FROM combo 
+SELECT combo.id, combo.nombre, po.id, po.nombre, pla.id, pla.nombre, b.id, b.nombre, combo.descripcion, combo.precio, combo.ruta_imagen,combo.tiempo FROM combo 
 JOIN postre AS po ON combo.postre_id = po.id 
 JOIN platillo AS pla ON combo.platillo_id= pla.id 
-JOIN bebida AS b ON combo.bebida_id=b.id;
+JOIN bebida AS b ON combo.bebida_id=b.id AND tiempo="DESAYUNO";
 
-SELECT * FROM postre;
-SELECT * FROM platillo;
-SELECT * FROM bebida;
+/*SELECT PARA MOSTRAR LOS COMBOS SU NOMBRE Y SU TIEMPO PARA SE SERVIDOS*/
+SELECT combo.id, combo.nombre, po.id, po.nombre, pla.id, pla.nombre, b.id, b.nombre, combo.descripcion, combo.precio, combo.ruta_imagen,combo.tiempo FROM combo 
+JOIN postre AS po ON combo.postre_id = po.id 
+JOIN platillo AS pla ON combo.platillo_id= pla.id 
+JOIN bebida AS b ON combo.bebida_id=b.id AND tiempo="ALMUERZO";
+
+/*SELECT PARA MOSTRAR LOS COMBOS SU NOMBRE Y SU TIEMPO PARA SE SERVIDOS*/
+SELECT combo.id, combo.nombre, po.id, po.nombre, pla.id, pla.nombre, b.id, b.nombre, combo.descripcion, combo.precio, combo.ruta_imagen,combo.tiempo FROM combo 
+JOIN postre AS po ON combo.postre_id = po.id 
+JOIN platillo AS pla ON combo.platillo_id= pla.id 
+JOIN bebida AS b ON combo.bebida_id=b.id AND tiempo="CENA";
+
+/*SELECT PARA VER Usuario*/
+SELECT us.correo, us.password, us.rol_id, r.nombre AS rol, us.persona_id, CONCAT(p.nombre1," ", p.apellido1) AS nombrePersona
+FROM usuario AS us 
+JOIN rol AS r ON us.rol_id=r.id
+JOIN persona AS p ON us.persona_id= p.id;

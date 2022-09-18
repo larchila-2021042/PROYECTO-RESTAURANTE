@@ -14,12 +14,12 @@ public interface IUsuarioDAO {
     public List <Usuario> getAll();
     
     //Insertar un registtro 
-    public boolean add(Usuario usuario); 
+    public int add(Usuario usuario); 
     
     //Actualizar un registro
-    public boolean update(Usuario usuario);
+    public int update(Usuario usuario);
     
     //Eliminar un registro
-    public boolean delete(Usuario usuario);
+    public int delete(Usuario usuario);
     
 }

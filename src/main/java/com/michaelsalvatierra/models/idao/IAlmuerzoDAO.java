@@ -12,11 +12,11 @@ public interface IAlmuerzoDAO {
     public List<Almuerzo> getAll();
 
     //Insertar un registtro 
-    public boolean add(Almuerzo almuerzo);
+    public int add(Almuerzo almuerzo);
 
     //Actualizar un registro
-    public boolean update(Almuerzo almuerzo);
+    public int update(Almuerzo almuerzo);
 
     //Eliminar un registro
-    public boolean delete(Almuerzo almuerzo);
+    public int delete(Almuerzo almuerzo);
 }

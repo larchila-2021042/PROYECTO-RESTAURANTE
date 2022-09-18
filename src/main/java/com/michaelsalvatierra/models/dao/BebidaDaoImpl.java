@@ -61,17 +61,17 @@ public class BebidaDaoImpl implements IBebidaDAO {
     }
 
     @Override
-    public boolean add(Bebida bebida) {
+    public int add(Bebida bebida) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public boolean update(Bebida bebida) {
+    public int update(Bebida bebida) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public boolean delete(Bebida bebida) {
+    public int delete(Bebida bebida) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

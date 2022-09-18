@@ -1,5 +1,15 @@
 package com.michaelsalvatierra.models.domain;
 
+import java.io.Serializable;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.persistence.Id;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+
 /**
  *
  * @author Octavio Alejandro Corzo Reyes
@@ -9,15 +19,42 @@ package com.michaelsalvatierra.models.domain;
  * Código Técnico: IN5BM
  *
  */
-public class Bebida {
 
+@Entity
+@Table(name = "bebida")
+@NamedQueries({
+    @NamedQuery(name = "Bebida.findAll", query = "from Bebida"),
+    @NamedQuery(name = "Bebida.find", query = "from Bebida WHERE id = :id"
+            + "")
+})
+
+public class Bebida implements Serializable{
+
+    private static final long serialVersionUID = 1L;
+    
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)   
     private int id;
+    
+    @Column
     private String nombre;
+    
+    @Column
     private String descripcion;
+    
+    @Column
     private float precio;
+    
+    @Column
     private float descuento;
+    
+    @Column(name = "ruta_imagen")
     private String rutaImagen;
 
+    public Bebida() {
+    }
+    
     public Bebida(int id, String nombre, String descripcion, float precio, float descuento, String rutaImagen) {
         this.id = id;
         this.nombre = nombre;
@@ -26,10 +63,7 @@ public class Bebida {
         this.descuento = descuento;
         this.rutaImagen = rutaImagen;
     }
-
-    public Bebida() {
-    }
-
+    
     public Bebida(int id, String nombre, float precio, float descuento) {
         this.id = id;
         this.nombre = nombre;
@@ -37,10 +71,20 @@ public class Bebida {
         this.descuento = descuento;
     }
 
-    public Bebida(int aInt, String string, String string0, String string1, String string2, String string3, String string4, String string5, String string6, String string7, String string8, String string9) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public Bebida(int id) {
+        this.id = id;
     }
 
+    public Bebida(String nombre, String descripcion, float precio, float descuento, String rutaImagen) {
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.precio = precio;
+        this.descuento = descuento;
+        this.rutaImagen = rutaImagen;
+    }
+    
+    
+    
     public int getId() {
         return id;
     }

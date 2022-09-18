@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 
 package com.michaelsalvatierra.models.idao;
 
@@ -14,18 +10,18 @@ import java.util.List;
  * @date Sep 2, 2022
  * @time 10:18:20 PM
  */
-public interface IPlatilloDao {
+public interface IPlatilloDAO {
     
     
     public List <Platillo> getAll();
     
     //Insertar un registtro 
-    public boolean add(Platillo platillos); 
+    public int add(Platillo platillos); 
     
     //Actualizar un registro
-    public boolean update(Platillo platillos);
+    public int update(Platillo platillos);
     
     //Eliminar un registro
-    public boolean delete(Platillo platillos);
+    public int delete(Platillo platillos);
     
 }

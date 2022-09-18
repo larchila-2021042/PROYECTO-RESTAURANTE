@@ -1,5 +1,15 @@
 package com.michaelsalvatierra.models.domain;
 
+import java.io.Serializable;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+
 /**
  *
  * @author Luis Fernando Archila Valdez
@@ -8,16 +18,42 @@ package com.michaelsalvatierra.models.domain;
  *
  * Código Técnico: IN5BM
  */
-public class Sede {
+@Entity
+@Table(name = "sede")
+@NamedQueries({
+    @NamedQuery(name = "Sede.findAll", query = "from Sede"),
+    @NamedQuery(name = "Sede.find", query = "from Sede WHERE id = :id"
+            + "")
+})
 
+
+public class Sede implements Serializable {
+    private static final long serialVersionUID = 1L;
+    
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)   
     private int id;
+    
+    @Column(name = "nombre_agencia")
     private String nombreAgencia;
+    
+    @Column(name = "NIT")
     private String nit;
+    
+    @Column
     private String direccion;
+    
+    @Column(name = "ruta_imagen")
     private String rutaImagen;
 
     public Sede() {
     }
+
+    public Sede(int id) {
+        this.id = id;
+    }
+    
 
     public Sede(int id, String nombreAgencia, String nit, String direccion) {
         this.id = id;
@@ -25,6 +61,15 @@ public class Sede {
         this.nit = nit;
         this.direccion = direccion;
     }
+
+    public Sede(String nombreAgencia, String nit, String direccion, String rutaImagen) {
+        this.nombreAgencia = nombreAgencia;
+        this.nit = nit;
+        this.direccion = direccion;
+        this.rutaImagen = rutaImagen;
+    }
+    
+    
 
     public Sede(int id, String nombreAgencia, String nit, String direccion, String rutaImagen) {
         this.id = id;

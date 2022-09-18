@@ -19,12 +19,12 @@ public interface IRolDAO {
     public List <Rol> getAll();
     
     //Insertar un registtro 
-    public boolean add(Rol rol); 
+    public int add(Rol rol); 
     
     //Actualizar un registro
-    public boolean update(Rol rol);
+    public int update(Rol rol);
     
     //Eliminar un registro
-    public boolean delete(Rol rol);
+    public int delete(Rol rol);
     
 }

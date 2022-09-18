@@ -1,8 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-
 package com.michaelsalvatierra.models.domain;
 
 /**
@@ -33,11 +28,12 @@ public class Desayunos {
     private String nombrePlatillo;
     private int bebidaId;
     private String nombreBebida;
-    private float precio;
+    private String descripcion; 
+    private double precio;
     private String rutaImagen;
     private String tiempo;
 
-    public Desayunos(int id, String nombre, int postreId, String nombrePostre, int platilloId, String nombrePlatillo, int bebidaId, String nombreBebida, float precio, String rutaImagen, String tiempo) {
+    public Desayunos(int id, String nombre, int postreId, String nombrePostre, int platilloId, String nombrePlatillo, int bebidaId, String nombreBebida, String Descripcion, double precio, String rutaImagen, String tiempo) {
         this.id = id;
         this.nombre = nombre;
         this.postreId = postreId;
@@ -46,34 +42,68 @@ public class Desayunos {
         this.nombrePlatillo = nombrePlatillo;
         this.bebidaId = bebidaId;
         this.nombreBebida = nombreBebida;
+        this.descripcion = Descripcion;
         this.precio = precio;
         this.rutaImagen = rutaImagen;
         this.tiempo = tiempo;
     }
+    //Este
+    public Desayunos(int id, String nombre, int postreId, int platilloId, int bebidaId, String Descripcion, double precio, String rutaImagen, String tiempo) {
+        this.id = id;
+        this.nombre = nombre;
+        this.postreId = postreId;
+        this.platilloId = platilloId;
+        this.bebidaId = bebidaId;
+        this.descripcion = Descripcion;
+        this.precio = precio;
+        this.rutaImagen = rutaImagen;
+        this.tiempo = tiempo;
+    }
+  
+    public Desayunos(int id, String nombre, int postreId, int platilloId, int bebidaId, String descripcion, double precio, String rutaImagen) {
+        this.id = id;
+        this.nombre = nombre;
+        this.postreId = postreId;
+        this.platilloId = platilloId;
+        this.bebidaId = bebidaId;
+        this.descripcion = descripcion;
+        this.precio = precio;
+        this.rutaImagen = rutaImagen;
+    }
+
+    public Desayunos(String nombre, int postreId, int platilloId, int bebidaId, String descripcion, double precio, String rutaImagen, String tiempo) {
+        this.nombre = nombre;
+        this.postreId = postreId;
+        this.platilloId = platilloId;
+        this.bebidaId = bebidaId;
+        this.descripcion = descripcion;
+        this.precio = precio;
+        this.rutaImagen = rutaImagen;
+        this.tiempo = tiempo;
+    }
+    
+   
+    
+  
+    
+    public Desayunos(int id) { 
+        this.id = id;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String Descripcion) {
+        this.descripcion = Descripcion;
+    }
+
+
 
     public Desayunos() {
     }
 
-    public Desayunos(int id, String nombre, int postreId, String nombrePostre, int platilloId, String nombrePlatillo, int bebidaId, String nombreBebida, float precio) {
-        this.id = id;
-        this.nombre = nombre;
-        this.postreId = postreId;
-        this.nombrePostre = nombrePostre;
-        this.platilloId = platilloId;
-        this.nombrePlatillo = nombrePlatillo;
-        this.bebidaId = bebidaId;
-        this.nombreBebida = nombreBebida;
-        this.precio = precio;
-    }
-
-    public Desayunos(int aInt, String string, int aInt0, String string0, int aInt1, String string1) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    public Desayunos(int aInt, String string, int aInt0, String string0, int aInt1, String string1, int aInt2) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
+    
     public int getId() {
         return id;
     }
@@ -138,11 +168,11 @@ public class Desayunos {
         this.nombreBebida = nombreBebida;
     }
 
-    public float getPrecio() {
+    public double getPrecio() {
         return precio;
     }
 
-    public void setPrecio(float precio) {
+    public void setPrecio(double precio) {
         this.precio = precio;
     }
 
@@ -164,8 +194,10 @@ public class Desayunos {
 
     @Override
     public String toString() {
-        return "Cena{" + "id=" + id + ", nombre=" + nombre + ", postreId=" + postreId + ", nombrePostre=" + nombrePostre + ", platilloId=" + platilloId + ", nombrePlatillo=" + nombrePlatillo + ", bebidaId=" + bebidaId + ", nombreBebida=" + nombreBebida + ", precio=" + precio + ", rutaImagen=" + rutaImagen + ", tiempo=" + tiempo + '}';
+        return "Desayunos{" + "id=" + id + ", nombre=" + nombre + ", postreId=" + postreId + ", nombrePostre=" + nombrePostre + ", platilloId=" + platilloId + ", nombrePlatillo=" + nombrePlatillo + ", bebidaId=" + bebidaId + ", nombreBebida=" + nombreBebida + ", Descripcion=" + descripcion + ", precio=" + precio + ", rutaImagen=" + rutaImagen + ", tiempo=" + tiempo + '}';
     }
+
+    
     
     
 }
